@@ -1,6 +1,6 @@
 package br.com.erudio.controllers;
 
-import br.com.erudio.exception.UnsupportedMathOperationException;
+import br.com.erudio.exception.ResourceNotFoundException;
 import br.com.erudio.math.SimpleMath;
 import br.com.erudio.request.converters.NumberConverter;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +18,7 @@ public class MathController1 {
     public Double sum(@PathVariable("numberOne") String numberOne,
                       @PathVariable("numberTwo") String numberTwo) throws Exception {
         if (!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
         return math.sum(NumberConverter.covertToDouble(numberOne) ,NumberConverter.covertToDouble(numberTwo));
     }
@@ -27,7 +27,7 @@ public class MathController1 {
     public Double subtraction(@PathVariable("numberOne") String numberOne,
                       @PathVariable("numberTwo") String numberTwo) throws Exception {
         if (!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
         return math.subtraction(NumberConverter.covertToDouble(numberOne) ,NumberConverter.covertToDouble(numberTwo));
     }
@@ -36,7 +36,7 @@ public class MathController1 {
     public Double multiplication(@PathVariable("numberOne") String numberOne,
                       @PathVariable("numberTwo") String numberTwo) throws Exception {
         if (!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-            throw new UnsupportedMathOperationException("Please set a numeric value!");
+            throw new ResourceNotFoundException("Please set a numeric value!");
         }
         return math.multiplication(NumberConverter.covertToDouble(numberOne) , NumberConverter.covertToDouble(numberTwo));
     }
@@ -45,7 +45,7 @@ public class MathController1 {
     public Double division(@PathVariable("numberOne") String numberOne,
                       @PathVariable("numberTwo") String numberTwo) throws Exception {
 		if (!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-			throw new UnsupportedMathOperationException("Please set a numeric value!");
+			throw new ResourceNotFoundException("Please set a numeric value!");
 		}
 		return math.multiplication(NumberConverter.covertToDouble(numberOne) , NumberConverter.covertToDouble(numberTwo));
 	}
@@ -54,7 +54,7 @@ public class MathController1 {
 	public Double mean(@PathVariable("numberOne") String numberOne,
 						   @PathVariable("numberTwo") String numberTwo) throws Exception {
 		if (!NumberConverter.isNumeric(numberOne) || !NumberConverter.isNumeric(numberTwo)) {
-			throw new UnsupportedMathOperationException("Please set a numeric value!");
+			throw new ResourceNotFoundException("Please set a numeric value!");
 		}
 		return math.mean(NumberConverter.covertToDouble(numberOne) , NumberConverter.covertToDouble(numberTwo));
 	}
@@ -62,7 +62,7 @@ public class MathController1 {
 	@RequestMapping(value="/square-root/{number}", method= RequestMethod.GET)
 	public Double squareRoot(@PathVariable("number") String number) throws Exception {
 		if (!NumberConverter.isNumeric(number)) {
-			throw new UnsupportedMathOperationException("Please set a numeric value!");
+			throw new ResourceNotFoundException("Please set a numeric value!");
 		}
         return math.squareRoot(NumberConverter.covertToDouble(number));
 	}
