@@ -1,5 +1,6 @@
 package br.com.erudio.dto;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class PersonDTO implements Serializable {
 
@@ -55,5 +56,16 @@ public class PersonDTO implements Serializable {
 
     public String getFirstName() {
         return fisrtName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof PersonDTO personDTO)) return false;
+        return Objects.equals(id, personDTO.id) && Objects.equals(fisrtName, personDTO.fisrtName) && Objects.equals(lastName, personDTO.lastName) && Objects.equals(address, personDTO.address) && Objects.equals(gender, personDTO.gender);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fisrtName, lastName, address, gender);
     }
 }
