@@ -1,5 +1,6 @@
 package br.com.erudio.mapper;
 
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
 
